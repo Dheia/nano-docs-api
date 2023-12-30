@@ -1,0 +1,2568 @@
+
+<h2>auth/register</h2>
+<p>This endpoint allows you to <code>register user</code>.</p>
+<p>/auth/register</p>
+<h3>The departments object</h3>
+<h4>Require Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>username</code></td>
+<td><code>string</code></td>
+<td>username</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>email</td>
+</tr>
+<tr>
+<td><code>mobile</code></td>
+<td><code>string</code></td>
+<td>mobile number</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td><code>string</code></td>
+<td>password</td>
+</tr>
+<tr>
+<td><code>password_confirmation</code></td>
+<td><code>string</code></td>
+<td>password_confirmation</td>
+</tr>
+<tr>
+<td><code>country_id</code></td>
+<td><code>integer</code></td>
+<td>country_id</td>
+</tr>
+<tr>
+<td><code>state_id</code></td>
+<td><code>integer</code></td>
+<td>state_id</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td><code>float</code></td>
+<td>latitude</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td><code>float</code></td>
+<td>latitude</td>
+</tr>
+</tbody>
+</table>
+<h4>Attributes</h4>
+<pre><code class="language-json">{
+  "id": 543,
+  "name": "dheiaAli1",
+  "username": "kddd9033@gmail.com",
+  "email": "kddd9033@gmail.com",
+  "mobile": null,
+  "gender": null,
+  "address_1": null,
+  "address_2": null,
+  "street_name": null,
+  "street_number": null,
+  "latitude": null,
+  "longitude": null,
+  "geo_components": null,
+  "city": null,
+  "zip": null,
+  "postcode": null,
+  "country_long": null,
+  "country_id": null,
+  "state_id": null,
+  "directorate_id": null,
+  "formataddress": null,
+  "vicinity": null,
+  "avatar": null,
+  "companys_id": "2",
+  "departments_id": "2",
+  "employees_id": null,
+  "ref_type": "user",
+  "ref_id": null,
+  "permissions": null,
+  "is_guest": false,
+  "is_superuser": false,
+  "is_activated": true,
+  "activated_at": "2022-08-31 20:23:58",
+  "last_login": "2022-10-15 20:14:35",
+  "created_at": "2022-08-31 20:23:58",
+  "updated_at": "2022-10-15 20:14:35",
+  "deleted_at": "",
+  "created_ip_address": "127.0.0.1",
+  "last_ip_address": "127.0.0.1"
+}</code></pre>
+<h4>Include Relation</h4>
+<table>
+<thead>
+<tr>
+<th>Relation Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>companys</code></td>
+<td><code>belongsTo</code></td>
+<td>The get companys</td>
+</tr>
+<tr>
+<td><code>department</code></td>
+<td><code>belongsTo</code></td>
+<td>The department</td>
+</tr>
+<tr>
+<td><code>groups</code></td>
+<td><code>belongsTo</code></td>
+<td>The get groups</td>
+</tr>
+<tr>
+<td><code>notifications</code></td>
+<td><code>hasMany</code></td>
+<td>The get notifications user</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><code>hasMany</code></td>
+<td>The get address user</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>belongsTo</code></td>
+<td>The get country data</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>belongsTo</code></td>
+<td>The get state data</td>
+</tr>
+<tr>
+<td><code>directorate</code></td>
+<td><code>belongsTo</code></td>
+<td>The get directorate data</td>
+</tr>
+</tbody>
+</table>
+<h3>Example 1 Register user</h3>
+<pre><code>POST /api/v1/auth/register</code></pre>
+<pre><code>http://localhost:8006/api/v1/auth/register?password=123456Dd&amp;username=kddd90335@gmail.com&amp;login2=dheiaAli5&amp;email=kddd90335@gmail.com&amp;mobile=7705294825</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 400 error </code></pre>
+<pre><code class="language-json">{
+  "error": {
+    "code": "WRONG_ARGS",
+    "http_code": 400,
+    "message": "الخاصية  البريد الالكتروني  تم أخذه مسبقاً"
+  }
+}</code></pre>
+<h3>Example 2 Register user</h3>
+<pre><code>POST /api/v1/auth/register</code></pre>
+<pre><code>http://localhost:8006/api/v1/auth/register?password=123456Dd&amp;username=kddd90336@gmail.com&amp;login2=dheiaAli6&amp;email=kddd90336@gmail.com&amp;mobile=7705294826</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok </code></pre>
+<pre><code class="language-json">{
+  "code": "200",
+  "message": "Login Success Full.",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE",
+  "token_type": "Bearer",
+  "expires_at": "2023-10-15T17:34:47.000000Z",
+  "revoked": false,
+  "user_id": 549,
+  "persist_code": "$2y$10$S0oMYQMudrFzvVC0D9iXH.jjG9S3P6i99s7yY7UGbB94VfLbZO63m"
+}</code></pre>
+<h2>Useing token in login</h2>
+<p>add Parameters Authorization in headr request </p>
+<p>Authorization = [token_type token]</p>
+<p><strong> Require Authorization in Header Request</strong></p>
+<pre><code class="language-html">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE</code></pre>  
+
+ <h2>auth/login</h2>
+<p>This endpoint allows you to <code>login user</code>.</p>
+<p>/auth/login</p>
+<h3>The Login object</h3>
+<h4>Require Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>loginAttribute</code></td>
+<td><code>string</code></td>
+<td>login Attribute Name [username,email,mobile] deafult value in setting web</td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td><code>string</code></td>
+<td>enter data login</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td><code>string</code></td>
+<td>password</td>
+</tr>
+</tbody>
+</table>
+<h4>other  Parameters</h4>
+<p><strong> يمكن استخدام هذه البراميترات عند عدم استخدام البراميتر  login </strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>username</code></td>
+<td><code>string</code></td>
+<td>username</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>email</td>
+</tr>
+<tr>
+<td><code>mobile</code></td>
+<td><code>string</code></td>
+<td>mobile number</td>
+</tr>
+</tbody>
+</table>
+<h4>Response Type</h4>
+<p><strong> في حالة الفشل سيتم ارجاع رقم الخطاء ورساله الخطاء كا التالي </strong></p>
+<pre><code>POST http://localhost:8006/api/v1/auth/login?login=dheiaAli6&amp;loginAttribute=mobile</code></pre>
+<pre><code class="language-html">Status: 400 error </code></pre>
+<pre><code class="language-json">{
+  "error": {
+    "code": "WRONG_ARGS",
+    "http_code": 400,
+    "message": "رقم الهاتف غير صحيح "
+  }
+}</code></pre>
+<pre><code class="language-json">{
+  "error": {
+    "code": "WRONG_ARGS",
+    "http_code": 400,
+    "message": "تنسيق الخاصية  رقم الهاتف غير صالح"
+  }
+}</code></pre>
+<pre><code class="language-json">{
+  "error": {
+    "code": "WRONG_ARGS",
+    "http_code": 400,
+    "message": "تنسيق الخاصية  البريد الالكتروني غير صالح"
+  }
+}</code></pre>
+<h3>Example 1 login user</h3>
+<pre><code>POST /api/v1/auth/login</code></pre>
+<pre><code>http://localhost:8006/api/v1/auth/login?password=123456Dd&amp;username=kddd90335@gmail.com&amp;login2=dheiaAli5&amp;email=kddd90335@gmail.com&amp;mobile=7705294825</code></pre>
+<p>تسجيل الدخول عن طريق رقم الهاتف </p>
+<pre><code>http://localhost:8006/api/v1/auth/login?password=123456Dd&amp;login=7705294826&amp;loginAttribute=mobile</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 400 error </code></pre>
+<pre><code class="language-json">{
+  "code": "200",
+  "message": "Login Success Full.",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWM2OWMwNmQ1ODk2NWU3OTljNzQ4MzRmMmZjNDEyYjkzZWViMjAwNmY5MGU0OTdiZWI1MTYwNThkNjQ4MmQyNDU3YWM2MDRjZTAxNzYwNTUiLCJpYXQiOjE2NjU4NTY0MDAuOTE1MTkwOSwibmJmIjoxNjY1ODU2NDAwLjkxNTIyNjksImV4cCI6MTY5NzM5MjQwMC44ODMxNzQ5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.vGmWfmYNKYo3wz3q_SCxIm4x5Kv7yhfVQM5_UB5bjlxkTrabqoWNO3gzQ_ZrhjNJsP0s_uYu-l0AGfOdt_0WTTDP0qQ7PfT0RcGXugMubgRdOV36DjY8lfmfKha9ZfxGN-VKFsd3GWzMg4vMNpvzjdqNlXsD3NIXJPkIngUbd-KaJQ3jshutjksxWcm_cPE-6QF8iPamhkNrycBsSPzvfxB9qHVG66A_k2oPg3ByrNwUXJ5YLfueCCFkm3X_N0YWysoM2M-Ltc8BYjrOApuu7mQcMhj6CsJ3ebeTIn-by_7OwC1KuD1zDD489bogCbbkoVoyD2DN3cqSy9yhE0MhHjiYfv2S7xNQYn_0yU5Y6wtsMUfMQeoqhrVCpg5VRylPWYlCxsPZPeoQQ6KvRP71mQS_FiySABEFLLCJazjsoBnS1qXNWtbJVSvEMHO3TabgK1cyymOXpr4Y0PR8X7B7BMrWhIFMDzp9UgY7I8wGa4Z7JkO0HWvWs1R6CTNkkMx7D34kG0384ekN4vRh947Gy051UJ1T8zCeU-klmysdp8mAeY1EthDQmo9rjtlErHw4eleb5x14ZCZ533l0jkpS6aD9Y7Z6s86ND5zQkYzsrpCNZPz-gL2d6rHme4Jc2hFHpW9UlseXj1cOeTn43EDKEkqormhZvghWjeW3fE0axl4",
+  "token_type": "Bearer",
+  "expires_at": "2023-10-15T17:53:20.000000Z",
+  "revoked": false,
+  "user_id": 549,
+  "persist_code": "$2y$10$S0oMYQMudrFzvVC0D9iXH.jjG9S3P6i99s7yY7UGbB94VfLbZO63m"
+}</code></pre>
+<h3>Example 2 Register user</h3>
+<pre><code>POST /api/v1/auth/login</code></pre>
+<pre><code>http://localhost:8006/api/v1/auth/login?password=123456Dd&amp;username=kddd90336@gmail.com&amp;login2=dheiaAli6&amp;email=kddd90336@gmail.com&amp;mobile=7705294826</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok </code></pre>
+<pre><code class="language-json">{
+  "code": "200",
+  "message": "Login Success Full.",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE",
+  "token_type": "Bearer",
+  "expires_at": "2023-10-15T17:34:47.000000Z",
+  "revoked": false,
+  "user_id": 549,
+  "persist_code": "$2y$10$S0oMYQMudrFzvVC0D9iXH.jjG9S3P6i99s7yY7UGbB94VfLbZO63m"
+}</code></pre>
+<h2>Useing token in login</h2>
+<p>add Parameters Authorization in headr request </p>
+<p>Authorization = [token_type token]</p>
+<p><strong> Require Authorization in Header Request</strong></p>
+<pre><code class="language-html">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE</code></pre>
+<h2>Useing token in login</h2>
+<p>add Parameters Authorization in headr request </p>
+<p>Authorization = [token_type token]</p>
+<p><strong> Require Authorization in Header Request</strong></p>
+<pre><code class="language-html">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE</code></pre>  
+
+<h2>auth/access_token</h2>
+<p>This endpoint allows you to <code>access_token</code>.</p>
+<p>/auth/access_token</p>
+<h3>The access_token check token expires and using</h3>
+<h2>Useing token  in headr request</h2>
+<p>add Parameters Authorization in headr request </p>
+<p>Authorization = [token_type token]</p>
+<p><strong> Require Authorization in Header Request</strong></p>
+<pre><code class="language-html">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE</code></pre>
+<h2>Useing token in login</h2>
+<p>add Parameters Authorization in headr request </p>
+<p>Authorization = [token_type token]</p>
+<p><strong> Require Authorization in Header Request</strong></p>
+<pre><code class="language-html">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTJiYjhkNWJjZjE4MWYxMjcyMjhlZjc5ODFmYzE5ZWFmOGY1ZjVjMWUxZjg5ZWEzMDVhMDNiMzMxZjM2OWUxYjMzZDA3NWFkM2FlMGE3YTMiLCJpYXQiOjE2NjU4NTUyODcuOTM4NDI1MSwibmJmIjoxNjY1ODU1Mjg3LjkzODQ3NDksImV4cCI6MTY5NzM5MTI4Ny45MDM3Mzk5LCJzdWIiOiI1NDkiLCJzY29wZXMiOltdfQ.uKRNZo1MNtDmdjR3pk00JjPoyE6IcJMvqdqMEOhR7syyw_a584gH4rMW9Jp4Rqq7Rc6ttM9UvKoDUk6Y38oA6elU96PcSk8nRsWZ_grSR7EwSX4DgW8qhEfVGUUm8GRceen12OBYnB3-sHOluVGWotFJdYYjWtWc9pw9otX3a8ZcC1kM3FZDqusYkPRuQiG4PiCsaRL1dRiMyp5cEc1JPma0aZL9iOBqwwB9sJYd9_wYz8S-ZEWBAGXwqbOkhZ9_GYwnfckQlgKiO1pDuX_Au_F138E659BFKNXibvU8rUTi9q15smFJ8icUBHrUhzIcQFjfdgqPQfGXkanJr5BcpByZbQMEqPhe18IBGduNaE53wClR4UL3ighFSmZWUa1ebdq6oKama5-DWDUVF18pi_owiTlkfHyXF-2aEvT-myxC7_9jvfbC3KVrOGCRuHiwWBALcdYP45ogSo7-RVCAupQi9TGrkzU85tEKCuo-JYQ3ATHjCmuW0bHsazM9je2vIe6j_-56v7YBaMR7vxoJ1kk-1rLoiEOg_IbRJ9XuQDCMk7gCOZLS9TmYvLm2oBe4VjTw7GVB8GxwB3mC8OwrcVyubTvNHTgvZH8BOrJDF349uQea4PGvXgySNktMo490zUQqn56uCCcBry3glHpdw-MYbBD5mGt5ma3AP4riLXE</code></pre>
+<h3>Example 1 access_token user</h3>
+<pre><code>POST /api/v1/auth/access_token</code></pre>
+<pre><code>POST http://localhost:8006/api/v1/auth/access_token</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok </code></pre>
+<pre><code class="language-json">{
+  "token_type": "Bearer",
+  "expires_in": 1296000,
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjY4NjhjYzJiYzE0YzgyNTdkYzE1NmUzNDI1OTY3Njc0M2YwZmQ0MTVmOTc2ODVhMDEyYmE1Mzk1NGYxZWU3ZjNiOWRhNzcxNzg3NjEwNDMiLCJpYXQiOjE2NjU4NTc3OTcuNjU5NDMxLCJuYmYiOjE2NjU4NTc3OTcuNjU5NDgyLCJleHAiOjE2NjcxNTM3OTcuMTUzMzM4LCJzdWIiOiI1NDMiLCJzY29wZXMiOltdfQ.veQy24OENGdVTgqVoWTttVyQ_jX_VVFetw8yz1xjM9Xlgw0UinQX12jrWLNRs5J8Ah4-1mr0Tb6KygFtYEh-PmhYzrwNhLy0QYWPArx-2amjE21jFV_5aHlW9-F1VPdMXbnR01tUOsqkf7FjgUUXg2FjqblDEiZG1FFhfPG8sRhBkH6vEQibxnezE740y6EKcwiAC3mAwyW8BY7uY1IdMzaqczbOumaSQmdMaRNWQP603GnDGKjJfKZNTfaVhSrBf3aMmF7-i3N9RJslz6345jNHew_HnkXptbnQvceSeFlUUa9SR-wXgEzDJfbL0ayS_OC1q6AyeDE34KAuSwhV-DEVDocaYjpft1Izr1oqRKtGRA_G5kXoeZ4awzqAbhSxLGwXn73kNsKEt1oz_7CLUGpmrx_IHfs4eDOmU9357jqAmEkNPTQjR68Ytt7Mk_bvl6wH-GL6fI2Vz2tlQvuP4FgD2rzDJbo1ZI3fmjOyTSELtMB9vaY1OOI0fE0UIjy0UgnVAqPGNeVuJ-D0IloBcFNaYnMsHBJdYaXfb06282ww9XmaNoBdzIVJ-oFPbSdDqjzYhQhlpSbIYDk3_9uViAgWPhMFHrsCqvLw04ov7pgaCJrt8kJVRTQdKxGNiGFawRr3IFJHyQtwrOe80KcP9bsmF1j51zoAN8KDGI6wqtU",
+  "refresh_token": "def502009ba69f6070aaf80eb772032bf5c745767c6f25e6ba82f1b86b7afefca259fcc1969da2cc3c7787a24540c80a34ff589e455186d23fc0ddc4b877a26592acba285a9450dbb2699f76d9a64b632b363651621c89306174be123496f7b0a39ea503809faa0a82fab821c4d5fca3b2942292684aed4a6a5f84f83f325e952d2ac7f7e97ca258897d16d11b1a165de5811354ef999ec573758e899580fde5123d4b2b2dc793fc3647f6e190d8bafc67a562f5a78bb874e41b64fa9ccd27272ac667481fbf3543fa124a398f5b7dfb251d64bf741c23a7aa0d81ea7de4e2a77b5120d90950e8c0c7cf899f130cb461ca8cc8cc174c946b6713d6d35e22224b97f65ceb21d9877b4ddc4f6d46b2ccbecb29ebfcf53114e1cf86962dc5e18cf33fc2704dffe130d2dababa0f77b464d70228044ef6f6ae1a506652b95c9d9eebba126507b4ceb967f3a0b1271e5678c9e057db52cae42bb118564ae5ce69b33740a5af"
+}</code></pre>
+<h3>Response Error</h3>
+<p><strong> فى حال حدوث خطاء كا عدم صحه التوكن او عدم وجود مستخدم مسجل يتم ارجاع رقم الخطاء ورساله بالخطاء </strong></p>
+<pre><code class="language-html">Status: 401 error UNAUTHORIZED</code></pre>
+<pre><code class="language-json">{
+  "error": {
+    "code": "UNAUTHORIZED",
+    "http_code": 401,
+    "message": "User No Found Please Login "
+  }
+}</code></pre>  
+
+<h2>Departments</h2>
+<p>This endpoint allows you to <code>list</code>, <code>show</code> your departments.</p>
+<p>/basic/departments</p>
+<h3>The departments object</h3>
+<h4>Public Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>q</code></td>
+<td><code>string</code></td>
+<td>using search in departments records</td>
+</tr>
+<tr>
+<td><code>orderBy</code></td>
+<td><code>string</code></td>
+<td>using orderBy departments records - Name column default value created_at</td>
+</tr>
+<tr>
+<td><code>orderDirection</code></td>
+<td><code>string</code></td>
+<td>using orderBy departments records [asc,desc] - Name column default value desc</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td><code>integer</code></td>
+<td>Number Records in Page default value 15</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><code>integer</code></td>
+<td>Number  Page default value 1</td>
+</tr>
+</tbody>
+</table>
+<h4>Attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td><strong>Required</strong>. The get is Active  departments default value true</td>
+</tr>
+<tr>
+<td><code>isNotHidden</code></td>
+<td><code>boolean</code></td>
+<td>The get is Not Hidden in Web records departments default value true</td>
+</tr>
+<tr>
+<td><code>isHidden</code></td>
+<td><code>integer</code></td>
+<td>The get is Hidden in Web records departments default value false</td>
+</tr>
+<tr>
+<td><code>IsMain</code></td>
+<td><code>boolean</code></td>
+<td>get main records departments default value false.</td>
+</tr>
+<tr>
+<td><code>IsSub</code></td>
+<td><code>boolean</code></td>
+<td>get main records departments default value true.</td>
+</tr>
+<tr>
+<td><code>tags_type_id</code></td>
+<td><code>integer</code></td>
+<td>useing select type departments default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>isOpened</code></td>
+<td><code>boolean</code></td>
+<td>check departments is Opene default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>isClosed</code></td>
+<td><code>boolean</code></td>
+<td>check departments is Closed default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>openTime</code></td>
+<td><code>boolean</code></td>
+<td>get open Time in current date default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>closeTime</code></td>
+<td><code>boolean</code></td>
+<td>get close Time in current date default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>getPeriod</code></td>
+<td><code>boolean</code></td>
+<td>get Period Time Works in current date default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><code>string</code></td>
+<td>get relation using [relation1,relation2,relation3]</td>
+</tr>
+<tr>
+</tr>
+</tbody>
+</table>
+<h4>Include Relation</h4>
+<table>
+<thead>
+<tr>
+<th>Relation Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>companys</code></td>
+<td><code>belongsTo</code></td>
+<td>The get companys</td>
+</tr>
+<tr>
+<td><code>tags_type</code></td>
+<td><code>belongsTo</code></td>
+<td>The get Type Refrence</td>
+</tr>
+<tr>
+<td><code>parent</code></td>
+<td><code>belongsTo</code></td>
+<td>The get parent departments</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td><code>hasMany</code></td>
+<td>The get childrens departments</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>belongsTo</code></td>
+<td>The get country data</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>belongsTo</code></td>
+<td>The get state data</td>
+</tr>
+<tr>
+<td><code>directorate</code></td>
+<td><code>belongsTo</code></td>
+<td>The get directorate data</td>
+</tr>
+</tbody>
+</table>
+<h3>List departments</h3>
+<p>Returns a list of departments you’ve previously created.</p>
+<pre><code>GET /api/v1/basic/departments</code></pre>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>integer</code></td>
+<td>The page number.</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td><code>integer</code></td>
+<td>The number of items per page.</td>
+</tr>
+</tbody>
+</table>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 OK</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "name": "مدارس الوفاء الاهلية",
+      "short_description": "مدارس الوفاء الاهلية",
+      "description": "مدارس الوفاء الاهلية",
+      "meta_title": "مدارس الوفاء الاهلية",
+      "meta_description": "مدارس الوفاء الاهلية",
+      "keywords": "مدارس الوفاء الاهلية",
+      "business_number": "",
+      "vat_number": "",
+      "mobile": "770529482",
+      "phone": null,
+      "email": null,
+      "website": null,
+      "companys_id": "2",
+      "address": "اب الدليل",
+      "address_1": null,
+      "address_2": null,
+      "street_name": null,
+      "street_number": null,
+      "latitude": null,
+      "longitude": null,
+      "geo_components": null,
+      "city": null,
+      "zip": null,
+      "postcode": null,
+      "country_long": null,
+      "country_id": "249",
+      "state_id": "1067",
+      "directorate_id": null,
+      "formataddress": null,
+      "vicinity": null,
+      "is_default": 1,
+      "is_hidden": 0,
+      "is_active": 1,
+      "main_sub": "sub",
+      "parent_id": "2",
+      "level": "2",
+      "tags_type_id": "1",
+      "links": null,
+      "properties": null,
+      "created_at": "2018-06-29 17:23:50",
+      "updated_at": "2022-10-14 17:19:39",
+      "image": null,
+      "images": [],
+      "files": []
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Example 1 get List Departments</h3>
+<p>GET <a href="http://localhost:8006/api/v1/basic/departments">http://localhost:8006/api/v1/basic/departments</a></p>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 OK</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "name": "مدارس الوفاء الاهلية",
+      "short_description": "مدارس الوفاء الاهلية",
+      "description": "مدارس الوفاء الاهلية",
+      "meta_title": "مدارس الوفاء الاهلية",
+      "meta_description": "مدارس الوفاء الاهلية",
+      "keywords": "مدارس الوفاء الاهلية",
+      "business_number": "",
+      "vat_number": "",
+      "mobile": "770529482",
+      "phone": null,
+      "email": null,
+      "website": null,
+      "companys_id": "2",
+      "address": "اب الدليل",
+      "address_1": null,
+      "address_2": null,
+      "street_name": null,
+      "street_number": null,
+      "latitude": null,
+      "longitude": null,
+      "geo_components": null,
+      "city": null,
+      "zip": null,
+      "postcode": null,
+      "country_long": null,
+      "country_id": "249",
+      "state_id": "1067",
+      "directorate_id": null,
+      "formataddress": null,
+      "vicinity": null,
+      "is_default": 1,
+      "is_hidden": 0,
+      "is_active": 1,
+      "main_sub": "sub",
+      "parent_id": "2",
+      "level": "2",
+      "tags_type_id": "1",
+      "links": null,
+      "properties": null,
+      "created_at": "2018-06-29 17:23:50",
+      "updated_at": "2022-10-14 17:19:39",
+      "image": null,
+      "images": [],
+      "files": []
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Example 2 get Departments and working Time</h3>
+<p>GET <a href="http://localhost:8006/api/v1/basic/departments?isOpened=true&amp;isClosed=true&amp;openTime=true&amp;closeTime=true">http://localhost:8006/api/v1/basic/departments?isOpened=true&amp;isClosed=true&amp;openTime=true&amp;closeTime=true</a></p>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 OK</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "name": "مدارس الوفاء الاهلية",
+      "short_description": "مدارس الوفاء الاهلية",
+      "description": "مدارس الوفاء الاهلية",
+      "meta_title": "مدارس الوفاء الاهلية",
+      "meta_description": "مدارس الوفاء الاهلية",
+      "keywords": "مدارس الوفاء الاهلية",
+      "business_number": "",
+      "vat_number": "",
+      "mobile": "770529482",
+      "phone": null,
+      "email": null,
+      "website": null,
+      "companys_id": "2",
+      "address": "اب الدليل",
+      "address_1": null,
+      "address_2": null,
+      "street_name": null,
+      "street_number": null,
+      "latitude": null,
+      "longitude": null,
+      "geo_components": null,
+      "city": null,
+      "zip": null,
+      "postcode": null,
+      "country_long": null,
+      "country_id": "249",
+      "state_id": "1067",
+      "directorate_id": null,
+      "formataddress": null,
+      "vicinity": null,
+      "is_default": 1,
+      "is_hidden": 0,
+      "is_active": 1,
+      "main_sub": "sub",
+      "parent_id": "2",
+      "level": "2",
+      "tags_type_id": "1",
+      "links": null,
+      "properties": null,
+      "created_at": "2018-06-29 17:23:50",
+      "updated_at": "2022-10-14 17:19:39",
+      "image": null,
+      "images": [],
+      "files": [],
+      "is_opened": false,
+      "is_closed": true,
+      "openTime": {
+        "date": "2022-10-17 01:45:00.000000",
+        "timezone_type": 3,
+        "timezone": "Asia\/Aden"
+      },
+      "closeTime": {
+        "date": "2022-10-17 23:55:00.000000",
+        "timezone_type": 3,
+        "timezone": "Asia\/Aden"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Show Data Record Departments</h3>
+<pre><code>GET /api/v1/basic/departments/{id}</code></pre>
+<p>Required Parameters: <code>id</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td><strong>Required</strong>. The id</td>
+</tr>
+</tbody>
+</table>
+<h4>Example 3 Show Data Record Departments 4</h4>
+<pre><code>GET http://localhost:8006/api/v1/basic/departments/4</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "id": 4,
+  "code": "2-2-4",
+  "name": "مدارس الوفاء الاهلية",
+  "short_description": "مدارس الوفاء الاهلية",
+  "description": "مدارس الوفاء الاهلية",
+  "meta_title": "مدارس الوفاء الاهلية",
+  "meta_description": "مدارس الوفاء الاهلية",
+  "keywords": "مدارس الوفاء الاهلية",
+  "business_number": "",
+  "vat_number": "",
+  "mobile": "770529482",
+  "phone": null,
+  "email": null,
+  "website": null,
+  "companys_id": "2",
+  "address": "اب الدليل",
+  "address_1": null,
+  "address_2": null,
+  "street_name": null,
+  "street_number": null,
+  "latitude": null,
+  "longitude": null,
+  "geo_components": null,
+  "city": null,
+  "zip": null,
+  "postcode": null,
+  "country_long": null,
+  "country_id": "249",
+  "state_id": "1067",
+  "directorate_id": null,
+  "formataddress": null,
+  "vicinity": null,
+  "is_default": 1,
+  "is_hidden": 0,
+  "is_active": 1,
+  "main_sub": "sub",
+  "parent_id": "2",
+  "level": "2",
+  "tags_type_id": "1",
+  "links": null,
+  "properties": null,
+  "created_at": "2018-06-29 17:23:50",
+  "updated_at": "2022-10-14 17:19:39",
+  "image": null,
+  "images": [],
+  "files": [],
+}</code></pre>
+<h4>Example 4 Show Data Record Departments 4 and working time</h4>
+<pre><code>GET http://localhost:8006/api/v1/basic/departments/4?isOpened=true&amp;isClosed=true&amp;openTime=true&amp;closeTime=true</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "id": 4,
+  "code": "2-2-4",
+  "name": "مدارس الوفاء الاهلية",
+  "short_description": "مدارس الوفاء الاهلية",
+  "description": "مدارس الوفاء الاهلية",
+  "meta_title": "مدارس الوفاء الاهلية",
+  "meta_description": "مدارس الوفاء الاهلية",
+  "keywords": "مدارس الوفاء الاهلية",
+  "business_number": "",
+  "vat_number": "",
+  "mobile": "770529482",
+  "phone": null,
+  "email": null,
+  "website": null,
+  "companys_id": "2",
+  "address": "اب الدليل",
+  "address_1": null,
+  "address_2": null,
+  "street_name": null,
+  "street_number": null,
+  "latitude": null,
+  "longitude": null,
+  "geo_components": null,
+  "city": null,
+  "zip": null,
+  "postcode": null,
+  "country_long": null,
+  "country_id": "249",
+  "state_id": "1067",
+  "directorate_id": null,
+  "formataddress": null,
+  "vicinity": null,
+  "is_default": 1,
+  "is_hidden": 0,
+  "is_active": 1,
+  "main_sub": "sub",
+  "parent_id": "2",
+  "level": "2",
+  "tags_type_id": "1",
+  "links": null,
+  "properties": null,
+  "created_at": "2018-06-29 17:23:50",
+  "updated_at": "2022-10-14 17:19:39",
+  "image": null,
+  "images": [],
+  "files": [],
+  "is_opened": false,
+  "is_closed": true,
+  "openTime": {
+    "date": "2022-10-17 01:45:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  },
+  "closeTime": {
+    "date": "2022-10-17 23:55:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  }
+}</code></pre>
+<h4>Example 5 Show Data Record Departments 4 and working time and Include Relation</h4>
+<pre><code>GET http://localhost:8006/api/v1/basic/departments/4?isOpened=true&amp;isClosed=true&amp;openTime=true&amp;closeTime=true&amp;include=companys,tags_type,parent,children</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "id": 4,
+  "code": "2-2-4",
+  "name": "مدارس الوفاء الاهلية",
+  "short_description": "مدارس الوفاء الاهلية",
+  "description": "مدارس الوفاء الاهلية",
+  "meta_title": "مدارس الوفاء الاهلية",
+  "meta_description": "مدارس الوفاء الاهلية",
+  "keywords": "مدارس الوفاء الاهلية",
+  "business_number": "",
+  "vat_number": "",
+  "mobile": "770529482",
+  "phone": null,
+  "email": null,
+  "website": null,
+  "companys_id": "2",
+  "address": "اب الدليل",
+  "address_1": null,
+  "address_2": null,
+  "street_name": null,
+  "street_number": null,
+  "latitude": null,
+  "longitude": null,
+  "geo_components": null,
+  "city": null,
+  "zip": null,
+  "postcode": null,
+  "country_long": null,
+  "country_id": "249",
+  "state_id": "1067",
+  "directorate_id": null,
+  "formataddress": null,
+  "vicinity": null,
+  "is_default": 1,
+  "is_hidden": 0,
+  "is_active": 1,
+  "main_sub": "sub",
+  "parent_id": "2",
+  "level": "2",
+  "tags_type_id": "1",
+  "links": null,
+  "properties": null,
+  "created_at": "2018-06-29 17:23:50",
+  "updated_at": "2022-10-14 17:19:39",
+  "image": null,
+  "images": [],
+  "files": [],
+  "is_opened": false,
+  "is_closed": true,
+  "openTime": {
+    "date": "2022-10-17 01:45:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  },
+  "closeTime": {
+    "date": "2022-10-17 23:55:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  },
+  "companys": {
+    "id": 2,
+    "code": "2",
+    "name": "مدارس الوفاء الأهلية النموذجية",
+    "short_description": "شركة رقم 1",
+    "description": "شركة رقم 1",
+    "meta_title": "",
+    "meta_description": "",
+    "keywords": null,
+    "business_number": null,
+    "vat_number": null,
+    "mobile": null,
+    "phone": [],
+    "email": [],
+    "website": [],
+    "address": "إب - الدليل - جوار محطة المشدود",
+    "address_1": null,
+    "address_2": null,
+    "street_name": null,
+    "street_number": null,
+    "latitude": null,
+    "longitude": null,
+    "geo_components": null,
+    "city": null,
+    "zip": null,
+    "postcode": null,
+    "country_long": null,
+    "country_id": "1",
+    "state_id": null,
+    "directorate_id": null,
+    "formataddress": null,
+    "vicinity": null,
+    "is_active": 1,
+    "tags_type_id": null,
+    "links": [],
+    "properties": [],
+    "created_at": "2018-04-05 16:54:53",
+    "updated_at": "2019-12-04 13:08:14"
+  },
+  "tags_type": {
+    "id": 1,
+    "code": "1-1",
+    "name": "الفئه العامه  ",
+    "slug": "tags_public",
+    "ref_type": "tags_public",
+    "short_description": "الفئه العامه الافتراضيه لكافه الانواع والاقسام ",
+    "description": "الفئه العامه الافتراضيه لكافه الانواع والاقسام ",
+    "meta_title": "الفئه العامه  ",
+    "meta_description": null,
+    "keywords": null,
+    "user_id": null,
+    "user_type": null,
+    "companys_id": "1",
+    "departments_id": "1",
+    "is_departments": 1,
+    "is_public": 1,
+    "is_default": 1,
+    "is_active": 1,
+    "is_published": 0,
+    "published_at": "",
+    "unpublished_at": "",
+    "properties": null,
+    "created_at": "",
+    "updated_at": "",
+    "image": null,
+    "images": []
+  },
+  "parent": {
+    "id": 2,
+    "code": "1-2",
+    "name": "مدارس الوفاء الأهلية النموذجية",
+    "short_description": "مدارس الوفاء الاهلية",
+    "description": "مدارس الوفاء الاهلية",
+    "meta_title": "مدارس الوفاء الاهلية",
+    "meta_description": "مدارس الوفاء الاهلية",
+    "keywords": "مدارس الوفاء الاهلية",
+    "business_number": "",
+    "vat_number": "",
+    "mobile": "770429482",
+    "phone": [
+      {
+        "phone_label": "هاتف المكتب",
+        "phone_number": "04461300",
+        "phone_type": "home",
+        "sort_show": "1",
+        "is_default": "1",
+        "is_show": "1",
+        "phone_note": "هاتف المكتب",
+        "_group": "phone"
+      }
+    ],
+    "email": [
+      {
+        "email_label": "البريد الرسمي",
+        "email_text": "kddd90@gmail.com",
+        "sort_show": "1",
+        "is_default": "1",
+        "is_show": "1",
+        "email_note": "",
+        "_group": "email"
+      }
+    ],
+    "website": [
+      {
+        "website_label": "الموقع الرسمي",
+        "website_url": "www.tss-y.com",
+        "website_type": "website",
+        "sort_show": "1",
+        "is_default": "1",
+        "is_show": "1",
+        "website_note": "",
+        "_group": "website"
+      }
+    ],
+    "companys_id": "2",
+    "address": "مدارس الوفاء الأهلية النموذجية",
+    "address_1": null,
+    "address_2": null,
+    "street_name": null,
+    "street_number": null,
+    "latitude": null,
+    "longitude": null,
+    "geo_components": null,
+    "city": null,
+    "zip": null,
+    "postcode": null,
+    "country_long": null,
+    "country_id": "249",
+    "state_id": "1067",
+    "directorate_id": null,
+    "formataddress": null,
+    "vicinity": null,
+    "is_default": 1,
+    "is_hidden": 0,
+    "is_active": 1,
+    "main_sub": "main",
+    "parent_id": null,
+    "level": "1",
+    "tags_type_id": "1",
+    "links": null,
+    "properties": null,
+    "created_at": "2018-06-29 17:17:24",
+    "updated_at": "2022-10-14 17:17:41",
+    "image": null,
+    "images": [],
+    "files": [],
+    "is_opened": false,
+    "is_closed": true,
+    "openTime": null,
+    "closeTime": null
+  },
+  "children": {
+    "data": [],
+    "meta": {
+      "pagination": {
+        "total": 0,
+        "count": 0,
+        "per_page": 10,
+        "current_page": 1,
+        "total_pages": 1,
+        "links": []
+      }
+    }
+  }
+}</code></pre>
+<h4>Example 4 Show Data Record Departments 4 and working time</h4>
+<pre><code>GET http://localhost:8006/api/v1/basic/departments/4?isOpened=true&amp;isClosed=true&amp;openTime=true&amp;closeTime=true</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "id": 4,
+  "code": "2-2-4",
+  "name": "مدارس الوفاء الاهلية",
+  "short_description": "مدارس الوفاء الاهلية",
+  "description": "مدارس الوفاء الاهلية",
+  "meta_title": "مدارس الوفاء الاهلية",
+  "meta_description": "مدارس الوفاء الاهلية",
+  "keywords": "مدارس الوفاء الاهلية",
+  "business_number": "",
+  "vat_number": "",
+  "mobile": "770529482",
+  "phone": null,
+  "email": null,
+  "website": null,
+  "companys_id": "2",
+  "address": "اب الدليل",
+  "address_1": null,
+  "address_2": null,
+  "street_name": null,
+  "street_number": null,
+  "latitude": null,
+  "longitude": null,
+  "geo_components": null,
+  "city": null,
+  "zip": null,
+  "postcode": null,
+  "country_long": null,
+  "country_id": "249",
+  "state_id": "1067",
+  "directorate_id": null,
+  "formataddress": null,
+  "vicinity": null,
+  "is_default": 1,
+  "is_hidden": 0,
+  "is_active": 1,
+  "main_sub": "sub",
+  "parent_id": "2",
+  "level": "2",
+  "tags_type_id": "1",
+  "links": null,
+  "properties": null,
+  "created_at": "2018-06-29 17:23:50",
+  "updated_at": "2022-10-14 17:19:39",
+  "image": null,
+  "images": [],
+  "files": [],
+  "is_opened": false,
+  "is_closed": true,
+  "openTime": {
+    "date": "2022-10-17 01:45:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  },
+  "closeTime": {
+    "date": "2022-10-17 23:55:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  }
+}</code></pre>
+<h4>Example 6 Show Data Record Departments 4 and working time and Include Relation</h4>
+<pre><code>GET http://localhost:8006/api/v1/basic/departments/4?isOpened=true&amp;isClosed=true&amp;openTime=true&amp;closeTime=true&amp;include=companys,tags_type,parent,children,country,state,directorate</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "id": 4,
+  "code": "2-2-4",
+  "name": "مدارس الوفاء الاهلية",
+  "short_description": "مدارس الوفاء الاهلية",
+  "description": "مدارس الوفاء الاهلية",
+  "meta_title": "مدارس الوفاء الاهلية",
+  "meta_description": "مدارس الوفاء الاهلية",
+  "keywords": "مدارس الوفاء الاهلية",
+  "business_number": "",
+  "vat_number": "",
+  "mobile": "770529482",
+  "phone": null,
+  "email": null,
+  "website": null,
+  "companys_id": "2",
+  "address": "اب الدليل",
+  "address_1": null,
+  "address_2": null,
+  "street_name": null,
+  "street_number": null,
+  "latitude": null,
+  "longitude": null,
+  "geo_components": null,
+  "city": null,
+  "zip": null,
+  "postcode": null,
+  "country_long": null,
+  "country_id": "249",
+  "state_id": "1067",
+  "directorate_id": null,
+  "formataddress": null,
+  "vicinity": null,
+  "is_default": 1,
+  "is_hidden": 0,
+  "is_active": 1,
+  "main_sub": "sub",
+  "parent_id": "2",
+  "level": "2",
+  "tags_type_id": "1",
+  "links": null,
+  "properties": null,
+  "created_at": "2018-06-29 17:23:50",
+  "updated_at": "2022-10-14 17:19:39",
+  "image": null,
+  "images": [],
+  "files": [],
+  "is_opened": false,
+  "is_closed": true,
+  "openTime": {
+    "date": "2022-10-17 01:45:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  },
+  "closeTime": {
+    "date": "2022-10-17 23:55:00.000000",
+    "timezone_type": 3,
+    "timezone": "Asia\/Aden"
+  },
+  "companys": {
+    "id": 2,
+    "code": "2",
+    "name": "مدارس الوفاء الأهلية النموذجية",
+    "short_description": "شركة رقم 1",
+    "description": "شركة رقم 1",
+    "meta_title": "",
+    "meta_description": "",
+    "keywords": null,
+    "business_number": null,
+    "vat_number": null,
+    "mobile": null,
+    "phone": [],
+    "email": [],
+    "website": [],
+    "address": "إب - الدليل - جوار محطة المشدود",
+    "address_1": null,
+    "address_2": null,
+    "street_name": null,
+    "street_number": null,
+    "latitude": null,
+    "longitude": null,
+    "geo_components": null,
+    "city": null,
+    "zip": null,
+    "postcode": null,
+    "country_long": null,
+    "country_id": "1",
+    "state_id": null,
+    "directorate_id": null,
+    "formataddress": null,
+    "vicinity": null,
+    "is_active": 1,
+    "tags_type_id": null,
+    "links": [],
+    "properties": [],
+    "created_at": "2018-04-05 16:54:53",
+    "updated_at": "2019-12-04 13:08:14"
+  },
+  "tags_type": {
+    "id": 1,
+    "code": "1-1",
+    "name": "الفئه العامه  ",
+    "slug": "tags_public",
+    "ref_type": "tags_public",
+    "short_description": "الفئه العامه الافتراضيه لكافه الانواع والاقسام ",
+    "description": "الفئه العامه الافتراضيه لكافه الانواع والاقسام ",
+    "meta_title": "الفئه العامه  ",
+    "meta_description": null,
+    "keywords": null,
+    "user_id": null,
+    "user_type": null,
+    "companys_id": "1",
+    "departments_id": "1",
+    "is_departments": 1,
+    "is_public": 1,
+    "is_default": 1,
+    "is_active": 1,
+    "is_published": 0,
+    "published_at": "",
+    "unpublished_at": "",
+    "properties": null,
+    "created_at": "",
+    "updated_at": "",
+    "image": null,
+    "images": []
+  },
+  "parent": {
+    "id": 2,
+    "code": "1-2",
+    "name": "مدارس الوفاء الأهلية النموذجية",
+    "short_description": "مدارس الوفاء الاهلية",
+    "description": "مدارس الوفاء الاهلية",
+    "meta_title": "مدارس الوفاء الاهلية",
+    "meta_description": "مدارس الوفاء الاهلية",
+    "keywords": "مدارس الوفاء الاهلية",
+    "business_number": "",
+    "vat_number": "",
+    "mobile": "770429482",
+    "phone": [
+      {
+        "phone_label": "هاتف المكتب",
+        "phone_number": "04461300",
+        "phone_type": "home",
+        "sort_show": "1",
+        "is_default": "1",
+        "is_show": "1",
+        "phone_note": "هاتف المكتب",
+        "_group": "phone"
+      }
+    ],
+    "email": [
+      {
+        "email_label": "البريد الرسمي",
+        "email_text": "kddd90@gmail.com",
+        "sort_show": "1",
+        "is_default": "1",
+        "is_show": "1",
+        "email_note": "",
+        "_group": "email"
+      }
+    ],
+    "website": [
+      {
+        "website_label": "الموقع الرسمي",
+        "website_url": "www.tss-y.com",
+        "website_type": "website",
+        "sort_show": "1",
+        "is_default": "1",
+        "is_show": "1",
+        "website_note": "",
+        "_group": "website"
+      }
+    ],
+    "companys_id": "2",
+    "address": "مدارس الوفاء الأهلية النموذجية",
+    "address_1": null,
+    "address_2": null,
+    "street_name": null,
+    "street_number": null,
+    "latitude": null,
+    "longitude": null,
+    "geo_components": null,
+    "city": null,
+    "zip": null,
+    "postcode": null,
+    "country_long": null,
+    "country_id": "249",
+    "state_id": "1067",
+    "directorate_id": null,
+    "formataddress": null,
+    "vicinity": null,
+    "is_default": 1,
+    "is_hidden": 0,
+    "is_active": 1,
+    "main_sub": "main",
+    "parent_id": null,
+    "level": "1",
+    "tags_type_id": "1",
+    "links": null,
+    "properties": null,
+    "created_at": "2018-06-29 17:17:24",
+    "updated_at": "2022-10-14 17:17:41",
+    "image": null,
+    "images": [],
+    "files": [],
+    "is_opened": false,
+    "is_closed": true,
+    "openTime": null,
+    "closeTime": null
+  },
+  "children": {
+    "data": [],
+    "meta": {
+      "pagination": {
+        "total": 0,
+        "count": 0,
+        "per_page": 10,
+        "current_page": 1,
+        "total_pages": 1,
+        "links": []
+      }
+    }
+  },
+  "country": {
+    "id": 249,
+    "code": "en",
+    "name": "يمن",
+    "is_enabled": true,
+    "is_pinned": false
+  },
+  "state": {
+    "id": 1067,
+    "code": "snaaa",
+    "name": "صنعاء",
+    "country_id": 249,
+    "is_enabled": true
+  },
+  "directorate": []
+}</code></pre>  
+
+
+ <h2>Products Api</h2>
+<p>This endpoint allows you to <code>list</code>, <code>show</code> your products.</p>
+<p>/shop/products</p>
+<h3>The products object</h3>
+<h4>Public Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>q</code></td>
+<td><code>string</code></td>
+<td>using search in departments records</td>
+</tr>
+<tr>
+<td><code>orderBy</code></td>
+<td><code>string</code></td>
+<td>using orderBy departments records - Name column default value created_at</td>
+</tr>
+<tr>
+<td><code>orderDirection</code></td>
+<td><code>string</code></td>
+<td>using orderBy departments records [asc,desc] - Name column default value desc</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td><code>integer</code></td>
+<td>Number Records in Page default value 15</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><code>integer</code></td>
+<td>Number  Page default value 1</td>
+</tr>
+</tbody>
+</table>
+<h4>Attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reftype</code></td>
+<td><code>string</code></td>
+<td><strong>Required</strong>. The get Products type [products,services,all] default value products</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td><strong>Required</strong>. The get is Active  departments default value true</td>
+</tr>
+<tr>
+<td><code>isPublished</code></td>
+<td><code>boolean</code></td>
+<td>The get is Published in Web records products default value true</td>
+</tr>
+<tr>
+<td><code>groups_products_id</code></td>
+<td><code>integer</code></td>
+<td>The get products in to groups_products_id  default value false</td>
+</tr>
+<tr>
+<td><code>companys_id</code></td>
+<td><code>integer</code></td>
+<td>get records products to companys_id default value false.</td>
+</tr>
+<tr>
+<td><code>departments_id</code></td>
+<td><code>integer</code></td>
+<td>get records products to departments_id default value true.</td>
+</tr>
+<tr>
+<td><code>categorysId</code></td>
+<td><code>string</code></td>
+<td>useing get products where categorysId [2,3,4] default value ''</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>tagsId</code></td>
+<td><code>string</code></td>
+<td>useing get products where tagsId [2,3,4] default value ''</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>isFavorites</code></td>
+<td><code>boolean</code></td>
+<td>useing get products where my Favorites default value false</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><code>string</code></td>
+<td>get relation using [relation1,relation2,relation3]</td>
+</tr>
+<tr>
+</tr>
+</tbody>
+</table>
+<h4>Include Relation</h4>
+<table>
+<thead>
+<tr>
+<th>Relation Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>companys</code></td>
+<td><code>belongsTo</code></td>
+<td>The get companys</td>
+</tr>
+<tr>
+<td><code>department</code></td>
+<td><code>belongsTo</code></td>
+<td>The get department</td>
+</tr>
+<tr>
+<td><code>groups_product</code></td>
+<td><code>belongsTo</code></td>
+<td>The get groups_product</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>hasMany</code></td>
+<td>The get tags</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>hasMany</code></td>
+<td>The get categories</td>
+</tr>
+</tbody>
+</table>
+<h3>List products</h3>
+<p>Returns a list of products you’ve previously created.</p>
+<pre><code>GET /api/v1/shop/products</code></pre>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>integer</code></td>
+<td>The page number.</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td><code>integer</code></td>
+<td>The number of items per page.</td>
+</tr>
+</tbody>
+</table>
+<h3>Example 1 get List Products</h3>
+<pre><code>GET http://localhost:8006/api/v1/shop/products</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 OK</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "barcode": "2-4",
+      "name": "حبة دجاج برست",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 4,
+      "created_at": "2022-10-02 15:22:20",
+      "updated_at": "2022-10-02 15:22:20",
+      "image": {
+        "original": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/633b47a8bee36870039097.png",
+        "small": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_160_160_0_0_crop.png",
+        "medium": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_240_240_0_0_crop.png",
+        "large": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_800_800_0_0_crop.png",
+        "thumb": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_480_480_0_0_auto.png"
+      },
+      "images": [],
+      "files": [],
+      "ratings_count": 4,
+      "countRating": 4,
+      "sumRating": "13",
+      "averageRating": "3.2500",
+      "user_is_rating": true,
+      "user_object_rating": {
+        "id": 15,
+        "code": "2-4-15",
+        "is_recommended": true,
+        "rating": 3,
+        "title": "543منتج رائع",
+        "content": "التعليق 543",
+        "approved": true,
+        "reviewrateable_type": "products",
+        "reviewrateable_id": 4,
+        "user_type": "RainLab\\User\\Models\\User",
+        "user_id": 543,
+        "name": null,
+        "email": null,
+        "url": "\/api\/v1\/shop\/products",
+        "hash": "8a20d49df9a87ab7c4fe945097bcca27",
+        "locale": "ar",
+        "ip": "127.0.0.1",
+        "ip_forwarded": null,
+        "user_agent": "okhttp\/3.8.1",
+        "companys_id": "2",
+        "departments_id": "4",
+        "is_active": true,
+        "other_data": null,
+        "config_data": null,
+        "sort_order": 15,
+        "created_by": null,
+        "updated_by": null,
+        "deleted_by": null,
+        "created_at": "2022-10-11 19:12:46",
+        "updated_at": "2022-10-11 19:23:31",
+        "deleted_at": null
+      },
+      "favorites_count": 3,
+      "user_is_favorite": true,
+      "user_object_favorite": {
+        "user_id": 543,
+        "favoriteable_type": "products",
+        "favoriteable_id": 4,
+        "created_at": "2022-10-09 23:46:35",
+        "updated_at": "2022-10-09 23:46:35"
+      }
+    },
+    {
+      "id": 3,
+      "code": "2-2-3",
+      "barcode": "2-3",
+      "name": "نفر رز",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 3,
+      "created_at": "2022-10-02 15:21:13",
+      "updated_at": "2022-10-02 15:21:13",
+      "image": null,
+      "images": [],
+      "files": [],
+      "ratings_count": 0,
+      "countRating": 0,
+      "sumRating": null,
+      "averageRating": null,
+      "user_is_rating": false,
+      "user_object_rating": null,
+      "favorites_count": 0,
+      "user_is_favorite": false,
+      "user_object_favorite": null
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 2,
+      "count": 2,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Example 2 get List Products reftype=services</h3>
+<p><strong> جلب الخدمات بتحديد النوع خدمه </strong></p>
+<pre><code>GET http://localhost:8006/api/v1/shop/products?reftype=services</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 OK</code></pre>
+<pre><code class="language-json"></code></pre>
+<h3>Example 3 get data Products</h3>
+<p><strong> لجب بيانات منتج معين نقوم بتمرير رقم المنتج فى الرابط كا التالى </strong></p>
+<p>Required Parameters: <code>id</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td><strong>Required</strong>. The id</td>
+</tr>
+</tbody>
+</table>
+<pre><code>GET /api/v1/shop/products/{id}</code></pre>
+<pre><code>GET http://localhost:8006/api/v1/shop/products/4</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 OK</code></pre>
+<pre><code class="language-json">{
+  "id": 4,
+  "code": "2-2-4",
+  "barcode": "2-4",
+  "name": "حبة دجاج برست",
+  "emblem": "",
+  "short_description": "",
+  "description": "",
+  "users_manual": "",
+  "composition": "",
+  "indication": "",
+  "meta_title": "",
+  "meta_description": "",
+  "keywords": "",
+  "ref_type_class": "products",
+  "ref_key_values_class": "3",
+  "groups_products_id": "2",
+  "companys_id": "2",
+  "departments_id": "2",
+  "is_effective": 1,
+  "is_default": null,
+  "is_active": 1,
+  "is_published": 1,
+  "published_at": "",
+  "unpublished_at": "",
+  "manage_stock": 0,
+  "shop_stock": 0,
+  "min_qty": 1,
+  "max_qty": 1,
+  "min_qty_in_stock": 1,
+  "max_qty_in_stock": 1,
+  "default_qty": 1,
+  "old_price": null,
+  "price": 0,
+  "is_show_old_price": 1,
+  "is_parleying": 1,
+  "is_sold": 1,
+  "is_purchased": 1,
+  "is_composite": 0,
+  "is_units": 1,
+  "is_downloadable": 1,
+  "properties": null,
+  "links": null,
+  "other_data": null,
+  "config_data": null,
+  "sort_order": 4,
+  "created_at": "2022-10-02 15:22:20",
+  "updated_at": "2022-10-02 15:22:20",
+  "image": {
+    "original": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/633b47a8bee36870039097.png",
+    "small": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_160_160_0_0_crop.png",
+    "medium": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_240_240_0_0_crop.png",
+    "large": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_800_800_0_0_crop.png",
+    "thumb": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_480_480_0_0_auto.png"
+  },
+  "images": [],
+  "files": [],
+  "ratings_count": 4,
+  "countRating": 4,
+  "sumRating": "13",
+  "averageRating": "3.2500",
+  "user_is_rating": true,
+  "user_object_rating": {
+    "id": 15,
+    "code": "2-4-15",
+    "is_recommended": true,
+    "rating": 3,
+    "title": "543منتج رائع",
+    "content": "التعليق 543",
+    "approved": true,
+    "reviewrateable_type": "products",
+    "reviewrateable_id": 4,
+    "user_type": "RainLab\\User\\Models\\User",
+    "user_id": 543,
+    "name": null,
+    "email": null,
+    "url": "\/api\/v1\/shop\/products",
+    "hash": "8a20d49df9a87ab7c4fe945097bcca27",
+    "locale": "ar",
+    "ip": "127.0.0.1",
+    "ip_forwarded": null,
+    "user_agent": "okhttp\/3.8.1",
+    "companys_id": "2",
+    "departments_id": "4",
+    "is_active": true,
+    "other_data": null,
+    "config_data": null,
+    "sort_order": 15,
+    "created_by": null,
+    "updated_by": null,
+    "deleted_by": null,
+    "created_at": "2022-10-11 19:12:46",
+    "updated_at": "2022-10-11 19:23:31",
+    "deleted_at": null
+  },
+  "favorites_count": 3,
+  "user_is_favorite": true,
+  "user_object_favorite": {
+    "user_id": 543,
+    "favoriteable_type": "products",
+    "favoriteable_id": 4,
+    "created_at": "2022-10-09 23:46:35",
+    "updated_at": "2022-10-09 23:46:35"
+  }
+}</code></pre>
+<h3>Example 4 Get My Favorites Products</h3>
+<p><strong>لجلب المنتجات المفضله للمستخدم الحالى نقوم بتمرير المتغير isFavorites = true </strong></p>
+<pre><code>GET /api/v1/shop/products</code></pre>
+<p>Required Parameters: <code>isFavorites = true</code></p>
+<pre><code>GET http://localhost:8006/api/v1/shop/products?isFavorites=true</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<p><strong> من خلال السجلات الراجعه فى الاسفل نلاحظ ان الخاصيه  user_is_favorite=true
+بمعنا ان هذا المنتج مضاف الى مفضله المستخدم الحالى </strong></p>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "barcode": "2-4",
+      "name": "حبة دجاج برست",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 4,
+      "created_at": "2022-10-02 15:22:20",
+      "updated_at": "2022-10-02 15:22:20",
+      "image": {
+        "original": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/633b47a8bee36870039097.png",
+        "small": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_160_160_0_0_crop.png",
+        "medium": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_240_240_0_0_crop.png",
+        "large": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_800_800_0_0_crop.png",
+        "thumb": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_480_480_0_0_auto.png"
+      },
+      "images": [],
+      "files": [],
+      "ratings_count": 4,
+      "countRating": 4,
+      "sumRating": "13",
+      "averageRating": "3.2500",
+      "user_is_rating": true,
+      "user_object_rating": {
+        "id": 15,
+        "code": "2-4-15",
+        "is_recommended": true,
+        "rating": 3,
+        "title": "543منتج رائع",
+        "content": "التعليق 543",
+        "approved": true,
+        "reviewrateable_type": "products",
+        "reviewrateable_id": 4,
+        "user_type": "RainLab\\User\\Models\\User",
+        "user_id": 543,
+        "name": null,
+        "email": null,
+        "url": "\/api\/v1\/shop\/products",
+        "hash": "8a20d49df9a87ab7c4fe945097bcca27",
+        "locale": "ar",
+        "ip": "127.0.0.1",
+        "ip_forwarded": null,
+        "user_agent": "okhttp\/3.8.1",
+        "companys_id": "2",
+        "departments_id": "4",
+        "is_active": true,
+        "other_data": null,
+        "config_data": null,
+        "sort_order": 15,
+        "created_by": null,
+        "updated_by": null,
+        "deleted_by": null,
+        "created_at": "2022-10-11 19:12:46",
+        "updated_at": "2022-10-11 19:23:31",
+        "deleted_at": null
+      },
+      "favorites_count": 3,
+      "user_is_favorite": true,
+      "user_object_favorite": {
+        "user_id": 543,
+        "favoriteable_type": "products",
+        "favoriteable_id": 4,
+        "created_at": "2022-10-09 23:46:35",
+        "updated_at": "2022-10-09 23:46:35"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Example 5 Get Products with companys_id or departments_id</h3>
+<p><strong> لجلب االاصناف االتابعه لفرع معين او لمتجر معين نستخدم البراميتر companys_id
+او البراميتر departments_id</strong></p>
+<p><strong>ملاحظه يمكنك جلب قيمه companys_id من بيانات الاقسام departmentsوالذي تمثل المتاجر </strong></p>
+<pre><code>GET /api/v1/shop/products</code></pre>
+<p>Required Parameters: <code>companys_id</code></p>
+<pre><code>http://localhost:8006/api/v1/shop/products?companys_id=2</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "barcode": "2-4",
+      "name": "حبة دجاج برست",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 4,
+      "created_at": "2022-10-02 15:22:20",
+      "updated_at": "2022-10-02 15:22:20",
+      "image": {
+        "original": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/633b47a8bee36870039097.png",
+        "small": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_160_160_0_0_crop.png",
+        "medium": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_240_240_0_0_crop.png",
+        "large": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_800_800_0_0_crop.png",
+        "thumb": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_480_480_0_0_auto.png"
+      },
+      "images": [],
+      "files": [],
+      "ratings_count": 4,
+      "countRating": 4,
+      "sumRating": "13",
+      "averageRating": "3.2500",
+      "user_is_rating": true,
+      "user_object_rating": {
+        "id": 15,
+        "code": "2-4-15",
+        "is_recommended": true,
+        "rating": 3,
+        "title": "543منتج رائع",
+        "content": "التعليق 543",
+        "approved": true,
+        "reviewrateable_type": "products",
+        "reviewrateable_id": 4,
+        "user_type": "RainLab\\User\\Models\\User",
+        "user_id": 543,
+        "name": null,
+        "email": null,
+        "url": "\/api\/v1\/shop\/products",
+        "hash": "8a20d49df9a87ab7c4fe945097bcca27",
+        "locale": "ar",
+        "ip": "127.0.0.1",
+        "ip_forwarded": null,
+        "user_agent": "okhttp\/3.8.1",
+        "companys_id": "2",
+        "departments_id": "4",
+        "is_active": true,
+        "other_data": null,
+        "config_data": null,
+        "sort_order": 15,
+        "created_by": null,
+        "updated_by": null,
+        "deleted_by": null,
+        "created_at": "2022-10-11 19:12:46",
+        "updated_at": "2022-10-11 19:23:31",
+        "deleted_at": null
+      },
+      "favorites_count": 3,
+      "user_is_favorite": true,
+      "user_object_favorite": {
+        "user_id": 543,
+        "favoriteable_type": "products",
+        "favoriteable_id": 4,
+        "created_at": "2022-10-09 23:46:35",
+        "updated_at": "2022-10-09 23:46:35"
+      }
+    },
+    {
+      "id": 3,
+      "code": "2-2-3",
+      "barcode": "2-3",
+      "name": "نفر رز",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 3,
+      "created_at": "2022-10-02 15:21:13",
+      "updated_at": "2022-10-02 15:21:13",
+      "image": null,
+      "images": [],
+      "files": [],
+      "ratings_count": 0,
+      "countRating": 0,
+      "sumRating": null,
+      "averageRating": null,
+      "user_is_rating": false,
+      "user_object_rating": null,
+      "favorites_count": 0,
+      "user_is_favorite": false,
+      "user_object_favorite": null
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 2,
+      "count": 2,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Example 6 Get Products with tagsId</h3>
+<p><strong> لجلب االاصناف التابعه لهشتاجات معينه نستخدم البراميتر tagsId كا التالى  </strong></p>
+<pre><code>GET /api/v1/shop/products</code></pre>
+<p>Required Parameters: <code>tagsId = true</code></p>
+<pre><code>http://localhost:8006/api/v1/shop/products?tagsId=4,6</code></pre>
+<p><strong> لاظهار اسماء الهشتاجات التابعه لكل صنف  نقوم بتضمين العلاقه tags كا التالى </strong></p>
+<pre><code>http://localhost:8006/api/v1/shop/products?tagsId=4,6&amp;include=tags</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "barcode": "2-4",
+      "name": "حبة دجاج برست",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 4,
+      "created_at": "2022-10-02 15:22:20",
+      "updated_at": "2022-10-02 15:22:20",
+      "image": {
+        "original": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/633b47a8bee36870039097.png",
+        "small": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_160_160_0_0_crop.png",
+        "medium": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_240_240_0_0_crop.png",
+        "large": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_800_800_0_0_crop.png",
+        "thumb": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_480_480_0_0_auto.png"
+      },
+      "images": [],
+      "files": [],
+      "ratings_count": 4,
+      "countRating": 4,
+      "sumRating": "13",
+      "averageRating": "3.2500",
+      "user_is_rating": true,
+      "user_object_rating": {
+        "id": 15,
+        "code": "2-4-15",
+        "is_recommended": true,
+        "rating": 3,
+        "title": "543منتج رائع",
+        "content": "التعليق 543",
+        "approved": true,
+        "reviewrateable_type": "products",
+        "reviewrateable_id": 4,
+        "user_type": "RainLab\\User\\Models\\User",
+        "user_id": 543,
+        "name": null,
+        "email": null,
+        "url": "\/api\/v1\/shop\/products",
+        "hash": "8a20d49df9a87ab7c4fe945097bcca27",
+        "locale": "ar",
+        "ip": "127.0.0.1",
+        "ip_forwarded": null,
+        "user_agent": "okhttp\/3.8.1",
+        "companys_id": "2",
+        "departments_id": "4",
+        "is_active": true,
+        "other_data": null,
+        "config_data": null,
+        "sort_order": 15,
+        "created_by": null,
+        "updated_by": null,
+        "deleted_by": null,
+        "created_at": "2022-10-11 19:12:46",
+        "updated_at": "2022-10-11 19:23:31",
+        "deleted_at": null
+      },
+      "favorites_count": 3,
+      "user_is_favorite": true,
+      "user_object_favorite": {
+        "user_id": 543,
+        "favoriteable_type": "products",
+        "favoriteable_id": 4,
+        "created_at": "2022-10-09 23:46:35",
+        "updated_at": "2022-10-09 23:46:35"
+      },
+      "tags": {
+        "data": [
+          {
+            "id": 4,
+            "code": "2-2-4",
+            "name": "هشتاج تجريبي",
+            "slug": "hshtag-tgryby",
+            "type": null,
+            "user_id": null,
+            "user_type": null,
+            "companys_id": "2",
+            "departments_id": "2",
+            "is_public": 0,
+            "is_default": 0,
+            "is_active": 1,
+            "is_published": 1,
+            "published_at": "",
+            "unpublished_at": "",
+            "properties": null,
+            "created_at": "2022-09-26 19:56:21",
+            "updated_at": "2022-09-26 19:56:21"
+          },
+          {
+            "id": 6,
+            "code": "2-2-6",
+            "name": "لحوم طازجه",
+            "slug": "lhom-tazgh",
+            "type": null,
+            "user_id": null,
+            "user_type": null,
+            "companys_id": "2",
+            "departments_id": "2",
+            "is_public": 0,
+            "is_default": 0,
+            "is_active": 1,
+            "is_published": 1,
+            "published_at": "",
+            "unpublished_at": "",
+            "properties": null,
+            "created_at": "2022-10-03 18:50:29",
+            "updated_at": "2022-10-03 18:50:29"
+          }
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>
+<h3>Example 7 Get Products with categorysId</h3>
+<pre><code>GET /api/v1/shop/products</code></pre>
+<p>Required Parameters: <code>categorysId = true</code></p>
+<pre><code>GET http://localhost:8006/api/v1/shop/products?categorysId=1,4</code></pre>
+<p><strong> لاظهار اسماء التصنيفات التابعه لكل صنف  نقوم بتضمين العلاقه categories كا التالى </strong></p>
+<pre><code>GET http://localhost:8006/api/v1/shop/products?categorysId=1,4&amp;include=categories</code></pre>
+<h4>Response</h4>
+<pre><code class="language-html">Status: 200 Ok</code></pre>
+<pre><code class="language-json">{
+  "data": [
+    {
+      "id": 4,
+      "code": "2-2-4",
+      "barcode": "2-4",
+      "name": "حبة دجاج برست",
+      "emblem": "",
+      "short_description": "",
+      "description": "",
+      "users_manual": "",
+      "composition": "",
+      "indication": "",
+      "meta_title": "",
+      "meta_description": "",
+      "keywords": "",
+      "ref_type_class": "products",
+      "ref_key_values_class": "3",
+      "groups_products_id": "2",
+      "companys_id": "2",
+      "departments_id": "2",
+      "is_effective": 1,
+      "is_default": null,
+      "is_active": 1,
+      "is_published": 1,
+      "published_at": "",
+      "unpublished_at": "",
+      "manage_stock": 0,
+      "shop_stock": 0,
+      "min_qty": 1,
+      "max_qty": 1,
+      "min_qty_in_stock": 1,
+      "max_qty_in_stock": 1,
+      "default_qty": 1,
+      "old_price": null,
+      "price": 0,
+      "is_show_old_price": 1,
+      "is_parleying": 1,
+      "is_sold": 1,
+      "is_purchased": 1,
+      "is_composite": 0,
+      "is_units": 1,
+      "is_downloadable": 1,
+      "properties": null,
+      "links": null,
+      "other_data": null,
+      "config_data": null,
+      "sort_order": 4,
+      "created_at": "2022-10-02 15:22:20",
+      "updated_at": "2022-10-02 15:22:20",
+      "image": {
+        "original": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/633b47a8bee36870039097.png",
+        "small": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_160_160_0_0_crop.png",
+        "medium": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_240_240_0_0_crop.png",
+        "large": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_800_800_0_0_crop.png",
+        "thumb": "http:\/\/localhost:8006\/storage\/app\/uploads\/public\/633\/b47\/a8b\/thumb_567_480_480_0_0_auto.png"
+      },
+      "images": [],
+      "files": [],
+      "ratings_count": 4,
+      "countRating": 4,
+      "sumRating": "13",
+      "averageRating": "3.2500",
+      "user_is_rating": true,
+      "user_object_rating": {
+        "id": 15,
+        "code": "2-4-15",
+        "is_recommended": true,
+        "rating": 3,
+        "title": "543منتج رائع",
+        "content": "التعليق 543",
+        "approved": true,
+        "reviewrateable_type": "products",
+        "reviewrateable_id": 4,
+        "user_type": "RainLab\\User\\Models\\User",
+        "user_id": 543,
+        "name": null,
+        "email": null,
+        "url": "\/api\/v1\/shop\/products",
+        "hash": "8a20d49df9a87ab7c4fe945097bcca27",
+        "locale": "ar",
+        "ip": "127.0.0.1",
+        "ip_forwarded": null,
+        "user_agent": "okhttp\/3.8.1",
+        "companys_id": "2",
+        "departments_id": "4",
+        "is_active": true,
+        "other_data": null,
+        "config_data": null,
+        "sort_order": 15,
+        "created_by": null,
+        "updated_by": null,
+        "deleted_by": null,
+        "created_at": "2022-10-11 19:12:46",
+        "updated_at": "2022-10-11 19:23:31",
+        "deleted_at": null
+      },
+      "favorites_count": 3,
+      "user_is_favorite": true,
+      "user_object_favorite": {
+        "user_id": 543,
+        "favoriteable_type": "products",
+        "favoriteable_id": 4,
+        "created_at": "2022-10-09 23:46:35",
+        "updated_at": "2022-10-09 23:46:35"
+      },
+      "categories": {
+        "data": [
+          {
+            "id": 1,
+            "code": "2-4-1",
+            "name": "عامه",
+            "slug": "aaamh",
+            "type": "1",
+            "user_id": null,
+            "user_type": null,
+            "companys_id": "2",
+            "departments_id": "4",
+            "country_id": null,
+            "is_public": 1,
+            "is_default": 0,
+            "is_active": 1,
+            "is_published": 1,
+            "published_at": "",
+            "unpublished_at": "",
+            "main_sub": "main",
+            "parent_id": null,
+            "level": "1",
+            "properties": null,
+            "created_at": "2022-09-26 19:55:19",
+            "updated_at": "2022-10-03 20:13:13"
+          }
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 15,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}</code></pre>  
